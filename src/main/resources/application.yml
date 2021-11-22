@@ -1,0 +1,7 @@
+server:
+  port: 8081
+
+api:
+  endpoint:
+    timer: "/api/timer"
+    decision: "/api/decision"
