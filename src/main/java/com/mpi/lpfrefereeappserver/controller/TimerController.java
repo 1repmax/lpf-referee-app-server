@@ -1,10 +1,10 @@
 package com.mpi.lpfrefereeappserver.controller;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author Raivo Lapins on 11/22/2021
@@ -14,6 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class TimerController {
 
     private boolean isRunning;
+
+    @Autowired
+    private SimpMessagingTemplate simpMessagingTemplate;
+
 
     @GetMapping(value = "/stop")
     public String stopTimer() {
@@ -28,6 +32,7 @@ public class TimerController {
 //        ModelAndView modelAndView = new ModelAndView("startView");
         System.out.println("Start called");
         isRunning = true;
+        simpMessagingTemplate.convertAndSend("/api/updates", "");
         return "start";
     }
 
