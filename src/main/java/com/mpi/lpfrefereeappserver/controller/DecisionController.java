@@ -2,10 +2,7 @@ package com.mpi.lpfrefereeappserver.controller;
 
 import com.mpi.lpfrefereeappserver.model.Vote;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -15,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("${api.endpoint.decision}")
 public class DecisionController {
 
-    @GetMapping(value = "/vote")
+    @PostMapping(value = "/vote")
     public Vote castVote(@RequestBody Vote vote) {
 //        ModelAndView modelAndView = new ModelAndView("stopView");
         return vote;

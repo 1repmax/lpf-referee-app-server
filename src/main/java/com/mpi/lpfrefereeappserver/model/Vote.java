@@ -14,6 +14,6 @@ import lombok.NoArgsConstructor;
 public class Vote {
 
     private String position;
-    private String decision;
+    private Decision decision;
 
 }
