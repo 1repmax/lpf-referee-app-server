@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("${api.endpoint.timer}")
 public class TimerController {
 
-    private boolean isRunning;
-
     @Autowired
     private SimpMessagingTemplate simpMessagingTemplate;
 
@@ -23,7 +21,7 @@ public class TimerController {
     public String stopTimer() {
 //        ModelAndView modelAndView = new ModelAndView("stopView");
         System.out.println("Stop called");
-        isRunning = false;
+        simpMessagingTemplate.convertAndSend("/api/updates", "timerStop");
         return "stop";
     }
 
@@ -31,8 +29,7 @@ public class TimerController {
     public String startTimer() {
 //        ModelAndView modelAndView = new ModelAndView("startView");
         System.out.println("Start called");
-        isRunning = true;
-        simpMessagingTemplate.convertAndSend("/api/updates", "");
+        simpMessagingTemplate.convertAndSend("/api/updates", "timerStart");
         return "start";
     }
 
@@ -40,7 +37,7 @@ public class TimerController {
     public String resetTimer() {
 //        ModelAndView modelAndView = new ModelAndView("resetView");
         System.out.println("Reset called");
-        isRunning = false;
+        simpMessagingTemplate.convertAndSend("/api/updates", "timerReset");
         return "reset";
     }
 }
