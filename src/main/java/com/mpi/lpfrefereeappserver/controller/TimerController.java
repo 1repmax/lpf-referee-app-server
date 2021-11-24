@@ -18,26 +18,20 @@ public class TimerController {
 
 
     @GetMapping(value = "/stop")
-    public String stopTimer() {
-//        ModelAndView modelAndView = new ModelAndView("stopView");
+    public void stopTimer() {
         System.out.println("Stop called");
         simpMessagingTemplate.convertAndSend("/api/updates", "timerStop");
-        return "stop";
     }
 
     @GetMapping(value = "/start")
-    public String startTimer() {
-//        ModelAndView modelAndView = new ModelAndView("startView");
+    public void startTimer() {
         System.out.println("Start called");
         simpMessagingTemplate.convertAndSend("/api/updates", "timerStart");
-        return "start";
     }
 
     @GetMapping(value = "/reset")
-    public String resetTimer() {
-//        ModelAndView modelAndView = new ModelAndView("resetView");
+    public void resetTimer() {
         System.out.println("Reset called");
         simpMessagingTemplate.convertAndSend("/api/updates", "timerReset");
-        return "reset";
     }
 }

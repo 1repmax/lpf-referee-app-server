@@ -1,9 +1,9 @@
 package com.mpi.lpfrefereeappserver.controller;
 
 import com.mpi.lpfrefereeappserver.model.Vote;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author Raivo Lapins on 11/22/2021
@@ -12,9 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("${api.endpoint.decision}")
 public class DecisionController {
 
+    @Autowired
+    private SimpMessagingTemplate simpMessagingTemplate;
+
     @PostMapping(value = "/vote")
     public Vote castVote(@RequestBody Vote vote) {
-//        ModelAndView modelAndView = new ModelAndView("stopView");
+        simpMessagingTemplate.convertAndSend("/api/votes", vote);
         return vote;
     }
 }

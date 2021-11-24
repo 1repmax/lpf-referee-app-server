@@ -19,18 +19,21 @@
     <div id="main-content" class="container">
         <div class="row">
             <div class="col-md-6">
-                <table id="conversation" class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Greetings</th>
-                    </tr>
-                    </thead>
-                    <tbody id="greetings">
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md-6">
                 <div id="timer">1:00</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <canvas id="circleLeft" width="300" height="300"></canvas>
+                <canvas id="mistakeLeft" width="150" height="150"></canvas>
+            </div>
+            <div class="col-md-4">
+                <canvas id="circleCenter" width="300" height="300"></canvas>
+                <canvas id="mistakeCenter" width="150" height="150"></canvas>
+            </div>
+            <div class="col-md-4">
+                <canvas id="circleRight" width="300" height="300"></canvas>
+                <canvas id="mistakeRight" width="150" height="150"></canvas>
             </div>
         </div>
     </div>
