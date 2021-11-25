@@ -1,9 +1,9 @@
 body {
     background-color: black;
-    font-color: white;
+    overflow: hidden;
 }
 
 #timer {
-    font-size: 36px;
-    background-color: white;
+    font-size: 15vw;
+    color: white;
 }
